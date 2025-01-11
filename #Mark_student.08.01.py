@@ -24,7 +24,9 @@ for student in students:
             7.Добавить новый предмет
             8.Удалить ученика 
             9.Удалить предмет
-            11.Выход из программы''')
+            10.Вывести средний балл ученика
+            11.Вывести все оценки ученика
+            12.Выход из программы''')
 
 
 while True:
@@ -102,7 +104,26 @@ while True:
                      classes.remove(classe_delete)
                      print(f'Предмет {classe_delete} удален из списка предметов')
                      print(classes)
-               elif command==10:
-                  print('10.Выход из программы')
+                elif command==10:
+                  print('10..Вывести средний балл ученика')
+                  student=input('Введите имя ученкика:')
+                  if student in students:
+                       if student in students_marks.keys() and classe in students_marks[student].keys():  
+                          marks_count=len(students_marks[student][classe]) # выводим средний балл  
+                          marks_sum=sum(students_marks[student][classe])
+                          print(f'''Ученик {student} по предметам -{classes}Имеет средний балл:{marks_sum//marks_count}''') 
+                  else:
+                   print(f"Ученик с именем {student} не найден.")      
+               elif command==11:
+                  print('11.Вывести все оценки ученика:') 
+                  student=input('Введите имя ученика:')
+                  if student in students_marks:
+                    print(f"Оценки {student}:")
+                    for subject, grades in students_marks[student].items():
+                     print(f"  {subject}: {grades}")
+                  else:
+                   print(f"Ученик с именем {student} не найден.")
+               elif command==12:
+                  print('12.Выход из программы')
                   break 
 
